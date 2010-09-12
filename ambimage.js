@@ -101,5 +101,5 @@ window.addEventListener("load",function() {
   var image;
   image = new Image();
   image.addEventListener("load", onImageReadyForDrawing);
-  image.src = "/WhaTV/assets/last.jpg";
+  image.src = "last.jpg";
 },false);
