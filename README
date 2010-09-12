@@ -1,0 +1,4 @@
+This is a simple amiblight system, changing the background-color to color
+calculated from an image.
+Some code was borrowed from Sergey Chikuyonok (serge.che@gmail.com) and
+(too) quickly adapted to my needs.
