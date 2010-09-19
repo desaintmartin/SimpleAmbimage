@@ -6,6 +6,7 @@
  * (too) quickly adapted.
 */
 
+simpleAmbimage = function() {
 /**
  * Calculates middle color for pixel block
  * @param {CanvasPixelArray} data Canvas pixel data
@@ -81,25 +82,30 @@ function getMedianColor(resultsLeft, resultsRight) {
 
 function onImageReadyForDrawing(e) {
   var convas, context, image, imageDataData, results;
-  image = e.target;
+  console.log(e);
+  image = e.target ? e.target : e;
   canvas = document.createElement('canvas');  
   canvas.setAttribute('id', 'canvas');
   context = canvas.getContext('2d');
   canvas.width = image.width;
   canvas.height = image.height;
   context.drawImage(image, 0, 0, image.width, image.height);
-  document.body.appendChild(image);
+  image.parentNode.appendChild(image);
   resultsLeft = getMidColors(canvas, context, 'left');
   resultsRight = getMidColors(canvas, context, 'right');
   results = getMedianColor(resultsLeft, resultsRight);
-  $('body').stop().animate({backgroundColor:'rgb(' +  results[0] + ', '
-                                                   +  results[1] + ', '
-                                                   +  results[2] + ')'}, 900);
+  stringResults = 'rgb(' +  results[0] + ', ' +  results[1] + ', ' +  results[2]
+                  + ')';
+  if (window.jQuery) {
+    $(image.parentNode).animate({backgroundColor: stringResults}, 900);
+  } else if (window.dojo) {
+    
+  }
 }
 
-window.addEventListener("load",function() {
-  var image;
-  image = new Image();
-  image.addEventListener("load", onImageReadyForDrawing);
-  image.src = "last.jpg";
-},false);
+return {
+  create: function(image) {
+     onImageReadyForDrawing(image);
+  }
+}
+}();
