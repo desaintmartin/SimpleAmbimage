@@ -106,7 +106,7 @@ function onImageReadyForDrawing(e) {
     }).play();
     dojo.animateProperty({ node: image.parentNode.parentNode, duration: 900,
       properties: { backgroundColor:
-        {start: rgb(106, 118, 136), end: stringResults}
+        {start: 'rgb(0, 0, 0)', end: stringResults}
       }
     }).play();
   }
