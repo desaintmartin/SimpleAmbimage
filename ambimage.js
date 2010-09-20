@@ -96,14 +96,14 @@ function onImageReadyForDrawing(e) {
   stringResults = 'rgb(' +  results[0] + ', ' +  results[1] + ', ' +  results[2]
                   + ')';
   if (window.jQuery) {
-    $(image.parentNode).animate({backgroundColor: stringResults}, 900, 'linear');
+    //$(image.parentNode).animate({backgroundColor: stringResults}, 900, 'linear');
     $(image.parentNode.parentNode).animate({backgroundColor: stringResults}, 900, 'linear');
   } else if (window.dojo) {
-    dojo.animateProperty({ node: image.parentNode, duration: 900,
+   /* dojo.animateProperty({ node: image.parentNode, duration: 900,
       properties: { backgroundColor:
         {start: image.parentNode.style.backgroundColor, end: stringResults}
       }
-    }).play();
+    }).play();*/
     dojo.animateProperty({ node: image.parentNode.parentNode, duration: 900,
       properties: { backgroundColor:
         {start: 'rgb(0, 0, 0)', end: stringResults}
