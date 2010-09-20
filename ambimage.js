@@ -82,7 +82,6 @@ function getMedianColor(resultsLeft, resultsRight) {
 
 function onImageReadyForDrawing(e) {
   var convas, context, image, imageDataData, results;
-  console.log(e);
   image = e.target ? e.target : e;
   canvas = document.createElement('canvas');  
   canvas.setAttribute('id', 'canvas');
@@ -98,8 +97,14 @@ function onImageReadyForDrawing(e) {
                   + ')';
   if (window.jQuery) {
     $(image.parentNode).animate({backgroundColor: stringResults}, 900, 'linear');
+    $(image.parentNode.parentNode).animate({backgroundColor: stringResults}, 900, 'linear');
   } else if (window.dojo) {
     dojo.animateProperty({ node: image.parentNode, duration: 900,
+      properties: { backgroundColor:
+        {start: image.parentNode.style.backgroundColor, end: stringResults}
+      }
+    }).play();
+    dojo.animateProperty({ node: image.parentNode.parentNode, duration: 900,
       properties: { backgroundColor:
         {start: image.parentNode.style.backgroundColor, end: stringResults}
       }
