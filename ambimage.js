@@ -96,6 +96,9 @@ function onImageReadyForDrawing(e) {
   stringResults = 'rgb(' +  results[0] + ', ' +  results[1] + ', ' +  results[2]
                   + ')';
   if (window.jQuery) {
+    if (!$.ui) {
+      console.error('jQuery UI not present.')
+    }
     //$(image.parentNode).animate({backgroundColor: stringResults}, 900, 'linear');
     $(image.parentNode.parentNode).animate({backgroundColor: stringResults}, 2000, 'linear');
   } else if (window.dojo) {
